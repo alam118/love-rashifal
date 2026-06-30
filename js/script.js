@@ -313,14 +313,18 @@ const dailyTips = {
         'आज अपने पार्टनर की तारीफ करना न भूलें - यह रिश्ते को मजबूत बनाता है 💕',
         'एक-दूसरे के लिए समय निकालें - यही सबसे बड़ा उपहार है 🌸',
         'प्यार में ईमानदारी सबसे महत्वपूर्ण है - सच बोलें 💌',
-        'अपने पार्टनर के सपनों को सुनें और उन्हें साकार करने में मदद करें 🌟'
+        'अपने पार्टनर के सपनों को सुनें और उन्हें साकार करने में मदद करें 🌟',
+        'एक-दूसरे की भावनाओं को समझें और उनका सम्मान करें 💖',
+        'प्यार में धैर्य रखें - हर रिश्ते को समय लगता है 🌱'
     ],
     en: [
         'Surprise your partner with something small - love lives in little things ❤️',
-        'Don\'t forget to compliment your partner today - it strengthens the bond 💕',
+        "Don't forget to compliment your partner today - it strengthens the bond 💕",
         'Make time for each other - it\'s the greatest gift 🌸',
         'Honesty is most important in love - speak the truth 💌',
-        'Listen to your partner\'s dreams and help them come true 🌟'
+        'Listen to your partner\'s dreams and help them come true 🌟',
+        'Understand and respect each other\'s feelings 💖',
+        'Be patient in love - every relationship takes time 🌱'
     ]
 };
 
@@ -495,28 +499,15 @@ function updateLanguage(lang) {
         ? '❤️ जानें अपने दिल के राज़ ❤️' 
         : '❤️ Discover the secrets of your heart ❤️';
     
-    // Update footer text
-    document.getElementById('footerDesc').textContent = lang === 'hi'
-        ? 'हर दिन आपके लिए सटीक प्रेम राशिफल'
-        : 'Accurate love horoscope for you every day';
+    // Update stat labels
+    document.getElementById('statZodiac').textContent = lang === 'hi' ? 'राशियाँ' : 'Zodiacs';
+    document.getElementById('statAccuracy').textContent = lang === 'hi' ? 'सटीकता' : 'Accuracy';
+    document.getElementById('statUsers').textContent = lang === 'hi' ? 'खुश उपयोगकर्ता' : 'Happy Users';
     
-    document.getElementById('linkHome').innerHTML = `<i class="fas fa-home"></i> ${lang === 'hi' ? 'होम' : 'Home'}`;
-    document.getElementById('linkAbout').innerHTML = `<i class="fas fa-info-circle"></i> ${lang === 'hi' ? 'हमारे बारे में' : 'About Us'}`;
-    document.getElementById('linkContact').innerHTML = `<i class="fas fa-envelope"></i> ${lang === 'hi' ? 'संपर्क करें' : 'Contact'}`;
-    document.getElementById('linkPrivacy').innerHTML = `<i class="fas fa-lock"></i> ${lang === 'hi' ? 'गोपनीयता' : 'Privacy'}`;
-    
-    document.getElementById('footerCopy').textContent = lang === 'hi'
-        ? '© 2026 Love Rashifal | ❤️ सभी अधिकार सुरक्षित'
-        : '© 2026 Love Rashifal | ❤️ All Rights Reserved';
-    
-    document.getElementById('termsLink').textContent = lang === 'hi' ? 'नियम' : 'Terms';
-    document.getElementById('policyLink').textContent = lang === 'hi' ? 'नीति' : 'Policy';
-    document.getElementById('sitemapLink').textContent = lang === 'hi' ? 'साइटमैप' : 'Sitemap';
-    
-    // Update newsletter placeholder
-    document.querySelector('.footer-newsletter input').placeholder = lang === 'hi'
-        ? '📧 ईमेल सब्सक्राइब करें'
-        : '📧 Subscribe via Email';
+    // Update footer
+    document.getElementById('footerText').textContent = lang === 'hi'
+        ? '❤️ Love Rashifal - हर दिन आपके लिए सटीक प्रेम राशिफल'
+        : '❤️ Love Rashifal - Accurate love horoscope for you every day';
     
     // Update zodiac signs
     document.querySelectorAll('.zodiac-item').forEach(item => {
@@ -568,35 +559,6 @@ function shareApp() {
                 document.body.removeChild(textArea);
             });
     }
-}
-
-// ===== Newsletter Subscription =====
-function subscribeNewsletter() {
-    const input = document.getElementById('newsletterInput');
-    const email = input.value.trim();
-    
-    if (!email) {
-        showToast(
-            currentLang === 'hi' ? '📧 कृपया ईमेल दर्ज करें' : '📧 Please enter an email',
-            'fas fa-exclamation-circle'
-        );
-        return;
-    }
-    
-    if (!email.includes('@') || !email.includes('.')) {
-        showToast(
-            currentLang === 'hi' ? '⚠️ कृपया सही ईमेल दर्ज करें' : '⚠️ Please enter a valid email',
-            'fas fa-exclamation-circle'
-        );
-        return;
-    }
-    
-    // Simulate subscription
-    showToast(
-        currentLang === 'hi' ? '✅ सब्सक्राइब हो गए! ❤️' : '✅ Subscribed! ❤️',
-        'fas fa-check-circle'
-    );
-    input.value = '';
 }
 
 // ===== Initialize Particles =====
@@ -662,11 +624,6 @@ themeToggle.addEventListener('click', toggleTheme);
 langToggle.addEventListener('click', toggleLanguage);
 
 shareBtn.addEventListener('click', shareApp);
-
-document.getElementById('newsletterBtn').addEventListener('click', subscribeNewsletter);
-document.getElementById('newsletterInput').addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') subscribeNewsletter();
-});
 
 // ===== Keyboard Navigation =====
 document.addEventListener('keydown', (e) => {
