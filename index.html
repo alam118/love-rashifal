@@ -1,1 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Love Rashifal - Daily Love Horoscope</title>
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+    <!-- Particle Background -->
+    <div id="particles-js"></div>
 
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <i class="fas fa-heart logo-icon"></i>
+                <h1>Love <span>Rashifal</span></h1>
+            </div>
+            <p class="tagline">Discover the secrets of your heart</p>
+        </header>
+
+        <!-- Date Display -->
+        <div class="date-display">
+            <i class="fas fa-calendar-day"></i>
+            <span id="currentDate"></span>
+        </div>
+
+        <!-- Zodiac Selection -->
+        <div class="zodiac-grid">
+            <div class="zodiac-item" data-sign="aries">
+                <i class="fas fa-star"></i>
+                <span>♈ Aries</span>
+            </div>
+            <div class="zodiac-item" data-sign="taurus">
+                <i class="fas fa-star"></i>
+                <span>♉ Taurus</span>
+            </div>
+            <div class="zodiac-item" data-sign="gemini">
+                <i class="fas fa-star"></i>
+                <span>♊ Gemini</span>
+            </div>
+            <div class="zodiac-item" data-sign="cancer">
+                <i class="fas fa-star"></i>
+                <span>♋ Cancer</span>
+            </div>
+            <div class="zodiac-item" data-sign="leo">
+                <i class="fas fa-star"></i>
+                <span>♌ Leo</span>
+            </div>
+            <div class="zodiac-item" data-sign="virgo">
+                <i class="fas fa-star"></i>
+                <span>♍ Virgo</span>
+            </div>
+            <div class="zodiac-item" data-sign="libra">
+                <i class="fas fa-star"></i>
+                <span>♎ Libra</span>
+            </div>
+            <div class="zodiac-item" data-sign="scorpio">
+                <i class="fas fa-star"></i>
+                <span>♏ Scorpio</span>
+            </div>
+            <div class="zodiac-item" data-sign="sagittarius">
+                <i class="fas fa-star"></i>
+                <span>♐ Sagittarius</span>
+            </div>
+            <div class="zodiac-item" data-sign="capricorn">
+                <i class="fas fa-star"></i>
+                <span>♑ Capricorn</span>
+            </div>
+            <div class="zodiac-item" data-sign="aquarius">
+                <i class="fas fa-star"></i>
+                <span>♒ Aquarius</span>
+            </div>
+            <div class="zodiac-item" data-sign="pisces">
+                <i class="fas fa-star"></i>
+                <span>♓ Pisces</span>
+            </div>
+        </div>
+
+        <!-- Selected Zodiac Display -->
+        <div class="selected-zodiac" id="selectedZodiac">
+            <span id="zodiacName">Select your zodiac sign</span>
+        </div>
+
+        <!-- Horoscope Result -->
+        <div class="horoscope-result" id="horoscopeResult">
+            <div class="result-header">
+                <i class="fas fa-heart pulse"></i>
+                <h2>Your Love Horoscope</h2>
+            </div>
+            <div class="result-content" id="resultContent">
+                <p class="placeholder-text">
+                    <i class="fas fa-arrow-up"></i>
+                    Choose your zodiac sign to see your daily love prediction
+                </p>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <i class="fas fa-heart"></i>
+                    <span>Made with Love by <strong>Rashifal Team</strong></span>
+                </div>
+                <div class="footer-social">
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <p class="footer-note">
+                <i class="fas fa-crown"></i> Daily predictions based on Vedic astrology
+            </p>
+        </footer>
+    </div>
+
+    <!-- Particles JS -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="js/script.js"></script>
+</body>
+</html>
