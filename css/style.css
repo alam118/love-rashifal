@@ -1,1 +1,515 @@
+/* ===== CSS Variables ===== */
+:root {
+    --primary: #ff6b9d;
+    --primary-dark: #e63976;
+    --primary-light: #ffb3c6;
+    --secondary: #9b59b6;
+    --accent: #f7dc6f;
+    --bg-dark: #0f0c1a;
+    --bg-card: rgba(255, 255, 255, 0.05);
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.7);
+    --shadow: 0 8px 32px rgba(255, 107, 157, 0.15);
+    --radius: 20px;
+    --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    --glow: 0 0 40px rgba(255, 107, 157, 0.3);
+}
 
+/* ===== Reset & Base ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg-dark);
+    color: var(--text-primary);
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* ===== Particle Background ===== */
+#particles-js {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* ===== Container ===== */
+.container {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px 20px 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ===== Header ===== */
+.header {
+    text-align: center;
+    padding: 30px 0 20px;
+    animation: fadeInDown 0.8s ease;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 8px;
+}
+
+.logo-icon {
+    font-size: 2.8rem;
+    color: var(--primary);
+    animation: pulseHeart 2s ease-in-out infinite;
+}
+
+.logo h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.logo h1 span {
+    background: linear-gradient(135deg, var(--accent), #ff6b6b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.tagline {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    letter-spacing: 3px;
+    font-weight: 300;
+}
+
+/* ===== Date Display ===== */
+.date-display {
+    text-align: center;
+    padding: 12px;
+    margin-bottom: 20px;
+    background: var(--bg-card);
+    backdrop-filter: blur(10px);
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.date-display i {
+    color: var(--primary);
+}
+
+/* ===== Zodiac Grid ===== */
+.zodiac-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 12px;
+    margin: 10px 0 20px;
+    padding: 4px;
+}
+
+.zodiac-item {
+    background: var(--bg-card);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: var(--radius);
+    padding: 16px 6px;
+    text-align: center;
+    cursor: pointer;
+    transition: var(--transition);
+    user-select: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.zodiac-item::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 107, 157, 0.1) 0%, transparent 70%);
+    opacity: 0;
+    transition: var(--transition);
+    transform: scale(0.5);
+}
+
+.zodiac-item:hover::before {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.zodiac-item:hover {
+    border-color: var(--primary);
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: var(--shadow);
+}
+
+.zodiac-item i {
+    font-size: 1rem;
+    color: var(--accent);
+    margin-bottom: 6px;
+    display: block;
+}
+
+.zodiac-item span {
+    font-size: 0.82rem;
+    font-weight: 500;
+    display: block;
+    letter-spacing: 0.5px;
+}
+
+.zodiac-item.active {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    border-color: var(--primary);
+    box-shadow: var(--glow);
+    transform: scale(1.05);
+}
+
+.zodiac-item.active i {
+    color: #fff;
+}
+
+.zodiac-item.active span {
+    color: #fff;
+}
+
+/* ===== Selected Zodiac ===== */
+.selected-zodiac {
+    text-align: center;
+    padding: 14px;
+    margin: 4px 0 16px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--primary-light);
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#zodiacName {
+    background: linear-gradient(135deg, #fff, var(--primary-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ===== Horoscope Result ===== */
+.horoscope-result {
+    background: var(--bg-card);
+    backdrop-filter: blur(20px);
+    border-radius: var(--radius);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 28px 24px;
+    margin: 10px 0 30px;
+    flex: 1;
+    animation: fadeInUp 0.6s ease;
+    box-shadow: var(--shadow);
+    min-height: 260px;
+    display: flex;
+    flex-direction: column;
+}
+
+.result-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 18px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.result-header i {
+    font-size: 1.8rem;
+    color: var(--primary);
+}
+
+.result-header i.pulse {
+    animation: pulseHeart 1.8s ease-in-out infinite;
+}
+
+.result-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #fff;
+}
+
+.result-content {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.placeholder-text {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.placeholder-text i {
+    color: var(--primary);
+    animation: bounceArrow 1.5s ease-in-out infinite;
+}
+
+/* Horoscope Content Styles */
+.horoscope-text {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--text-primary);
+    text-align: center;
+    padding: 4px 0;
+}
+
+.horoscope-text .highlight {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.horoscope-text .emoji {
+    font-size: 1.3rem;
+}
+
+.horoscope-meta {
+    margin-top: 16px;
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.horoscope-meta span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.horoscope-meta i {
+    color: var(--accent);
+}
+
+/* ===== Footer ===== */
+.footer {
+    margin-top: auto;
+    padding: 20px 0 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.footer-brand {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.footer-brand i {
+    color: var(--primary);
+    animation: pulseHeart 2s ease-in-out infinite;
+}
+
+.footer-brand strong {
+    color: #fff;
+    font-weight: 600;
+}
+
+.footer-social {
+    display: flex;
+    gap: 16px;
+}
+
+.footer-social a {
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+    transition: var(--transition);
+}
+
+.footer-social a:hover {
+    color: var(--primary);
+    transform: translateY(-3px);
+}
+
+.footer-note {
+    margin-top: 10px;
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.3);
+    letter-spacing: 1px;
+}
+
+.footer-note i {
+    color: var(--accent);
+}
+
+/* ===== Animations ===== */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulseHeart {
+    0%,
+    100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+@keyframes bounceArrow {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-6px);
+    }
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+    .logo h1 {
+        font-size: 2.2rem;
+    }
+
+    .logo-icon {
+        font-size: 2.2rem;
+    }
+
+    .zodiac-grid {
+        grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+        gap: 8px;
+    }
+
+    .zodiac-item {
+        padding: 12px 4px;
+    }
+
+    .zodiac-item span {
+        font-size: 0.7rem;
+    }
+
+    .horoscope-result {
+        padding: 20px 16px;
+        min-height: 200px;
+    }
+
+    .result-header h2 {
+        font-size: 1.2rem;
+    }
+
+    .horoscope-text {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
+    .horoscope-meta {
+        flex-direction: column;
+        gap: 8px;
+        align-items: center;
+    }
+
+    .footer-brand {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 12px 12px 0;
+    }
+
+    .zodiac-grid {
+        grid-template-columns: repeat(auto-fill, minmax(68px, 1fr));
+        gap: 6px;
+    }
+
+    .zodiac-item {
+        padding: 10px 2px;
+        border-radius: 14px;
+    }
+
+    .zodiac-item span {
+        font-size: 0.6rem;
+    }
+
+    .logo h1 {
+        font-size: 1.8rem;
+    }
+
+    .tagline {
+        font-size: 0.8rem;
+    }
+
+    .horoscope-result {
+        padding: 16px 12px;
+        min-height: 170px;
+    }
+}
+
+/* ===== Scrollbar ===== */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-dark);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-dark);
+}
