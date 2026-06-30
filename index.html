@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Love Rashifal - Daily Love Horoscope</title>
+    <title>Love Rashifal - प्रेम राशिफल ❤️</title>
     
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css" />
@@ -20,13 +20,27 @@
 
     <!-- Main Container -->
     <div class="container">
+        <!-- Top Bar -->
+        <div class="top-bar">
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle Theme">
+                <i class="fas fa-moon"></i>
+            </button>
+            <button class="share-btn" id="shareBtn" aria-label="Share">
+                <i class="fas fa-share-alt"></i>
+            </button>
+            <button class="lang-toggle" id="langToggle" aria-label="Toggle Language">
+                <i class="fas fa-language"></i>
+                <span id="langLabel">हिंदी</span>
+            </button>
+        </div>
+
         <!-- Header -->
         <header class="header">
             <div class="logo">
                 <i class="fas fa-heart logo-icon"></i>
                 <h1>Love <span>Rashifal</span></h1>
             </div>
-            <p class="tagline">Discover the secrets of your heart</p>
+            <p class="tagline" id="tagline">❤️ जानें अपने दिल के राज़ ❤️</p>
         </header>
 
         <!-- Date Display -->
@@ -35,94 +49,180 @@
             <span id="currentDate"></span>
         </div>
 
+        <!-- Quick Stats -->
+        <div class="quick-stats" id="quickStats">
+            <div class="stat-item">
+                <i class="fas fa-users"></i>
+                <span id="totalUsers">12</span>
+                <small>राशियाँ</small>
+            </div>
+            <div class="stat-item">
+                <i class="fas fa-heart"></i>
+                <span id="loveScore">98%</span>
+                <small>सटीकता</small>
+            </div>
+            <div class="stat-item">
+                <i class="fas fa-smile"></i>
+                <span id="happyUsers">10K+</span>
+                <small>खुश उपयोगकर्ता</small>
+            </div>
+        </div>
+
         <!-- Zodiac Selection -->
-        <div class="zodiac-grid">
+        <div class="zodiac-grid" id="zodiacGrid">
             <div class="zodiac-item" data-sign="aries">
                 <i class="fas fa-star"></i>
-                <span>♈ Aries</span>
+                <span>♈ मेष</span>
             </div>
             <div class="zodiac-item" data-sign="taurus">
                 <i class="fas fa-star"></i>
-                <span>♉ Taurus</span>
+                <span>♉ वृषभ</span>
             </div>
             <div class="zodiac-item" data-sign="gemini">
                 <i class="fas fa-star"></i>
-                <span>♊ Gemini</span>
+                <span>♊ मिथुन</span>
             </div>
             <div class="zodiac-item" data-sign="cancer">
                 <i class="fas fa-star"></i>
-                <span>♋ Cancer</span>
+                <span>♋ कर्क</span>
             </div>
             <div class="zodiac-item" data-sign="leo">
                 <i class="fas fa-star"></i>
-                <span>♌ Leo</span>
+                <span>♌ सिंह</span>
             </div>
             <div class="zodiac-item" data-sign="virgo">
                 <i class="fas fa-star"></i>
-                <span>♍ Virgo</span>
+                <span>♍ कन्या</span>
             </div>
             <div class="zodiac-item" data-sign="libra">
                 <i class="fas fa-star"></i>
-                <span>♎ Libra</span>
+                <span>♎ तुला</span>
             </div>
             <div class="zodiac-item" data-sign="scorpio">
                 <i class="fas fa-star"></i>
-                <span>♏ Scorpio</span>
+                <span>♏ वृश्चिक</span>
             </div>
             <div class="zodiac-item" data-sign="sagittarius">
                 <i class="fas fa-star"></i>
-                <span>♐ Sagittarius</span>
+                <span>♐ धनु</span>
             </div>
             <div class="zodiac-item" data-sign="capricorn">
                 <i class="fas fa-star"></i>
-                <span>♑ Capricorn</span>
+                <span>♑ मकर</span>
             </div>
             <div class="zodiac-item" data-sign="aquarius">
                 <i class="fas fa-star"></i>
-                <span>♒ Aquarius</span>
+                <span>♒ कुंभ</span>
             </div>
             <div class="zodiac-item" data-sign="pisces">
                 <i class="fas fa-star"></i>
-                <span>♓ Pisces</span>
+                <span>♓ मीन</span>
             </div>
         </div>
 
         <!-- Selected Zodiac Display -->
         <div class="selected-zodiac" id="selectedZodiac">
-            <span id="zodiacName">Select your zodiac sign</span>
+            <span id="zodiacName">✨ अपनी राशि चुनें ✨</span>
         </div>
 
         <!-- Horoscope Result -->
         <div class="horoscope-result" id="horoscopeResult">
             <div class="result-header">
                 <i class="fas fa-heart pulse"></i>
-                <h2>Your Love Horoscope</h2>
+                <h2 id="resultTitle">💕 आज का प्रेम राशिफल</h2>
             </div>
             <div class="result-content" id="resultContent">
                 <p class="placeholder-text">
                     <i class="fas fa-arrow-up"></i>
-                    Choose your zodiac sign to see your daily love prediction
+                    <span id="placeholderMsg">अपनी राशि चुनें और जानें अपने प्रेम का भविष्य</span>
                 </p>
             </div>
         </div>
 
-        <!-- Footer -->
+        <!-- Daily Love Tip -->
+        <div class="daily-tip" id="dailyTip">
+            <div class="tip-icon">
+                <i class="fas fa-lightbulb"></i>
+            </div>
+            <div class="tip-content">
+                <h4 id="tipTitle">💡 आज का प्रेम टिप</h4>
+                <p id="tipText">अपने पार्टनर को एक छोटा सा सरप्राइज़ दें - प्यार छोटी-छोटी बातों में बसता है ❤️</p>
+            </div>
+        </div>
+
+        <!-- Enhanced Footer -->
         <footer class="footer">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <i class="fas fa-heart"></i>
-                    <span>Made with Love by <strong>Rashifal Team</strong></span>
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h4><i class="fas fa-heart" style="color: var(--primary);"></i> Love Rashifal</h4>
+                    <p id="footerDesc">हर दिन आपके लिए सटीक प्रेम राशिफल</p>
+                    <div class="footer-app-download">
+                        <span class="badge"><i class="fas fa-apple"></i> App Store</span>
+                        <span class="badge"><i class="fab fa-google-play"></i> Play Store</span>
+                    </div>
                 </div>
-                <div class="footer-social">
-                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+
+                <div class="footer-section">
+                    <h4>📌 त्वरित लिंक</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" id="linkHome"><i class="fas fa-home"></i> होम</a></li>
+                        <li><a href="#" id="linkAbout"><i class="fas fa-info-circle"></i> हमारे बारे में</a></li>
+                        <li><a href="#" id="linkContact"><i class="fas fa-envelope"></i> संपर्क करें</a></li>
+                        <li><a href="#" id="linkPrivacy"><i class="fas fa-lock"></i> गोपनीयता</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>🌐 सोशल मीडिया</h4>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Instagram" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="YouTube" class="social-icon"><i class="fab fa-youtube"></i></a>
+                        <a href="#" aria-label="Facebook" class="social-icon"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Telegram" class="social-icon"><i class="fab fa-telegram"></i></a>
+                    </div>
+                    <div class="footer-newsletter">
+                        <input type="email" placeholder="📧 ईमेल सब्सक्राइब करें" id="newsletterInput" />
+                        <button id="newsletterBtn"><i class="fas fa-paper-plane"></i></button>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>⭐ रेटिंग</h4>
+                    <div class="footer-rating">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>4.8 / 5.0 (2,450+ रिव्यू)</p>
+                    </div>
+                    <div class="footer-version">
+                        <i class="fas fa-code"></i>
+                        <span>v2.0</span>
+                    </div>
                 </div>
             </div>
-            <p class="footer-note">
-                <i class="fas fa-crown"></i> Daily predictions based on Vedic astrology
-            </p>
+            
+            <div class="footer-bottom">
+                <p id="footerCopy">© 2026 Love Rashifal | ❤️ सभी अधिकार सुरक्षित</p>
+                <div class="footer-bottom-links">
+                    <a href="#" id="termsLink">नियम</a>
+                    <span>|</span>
+                    <a href="#" id="policyLink">नीति</a>
+                    <span>|</span>
+                    <a href="#" id="sitemapLink">साइटमैप</a>
+                </div>
+            </div>
         </footer>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle" id="toastIcon"></i>
+        <span id="toastMessage">Copied!</span>
     </div>
 
     <!-- Particles JS -->
